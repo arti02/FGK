@@ -2,9 +2,15 @@ package fgk.zad1;
 
 import java.lang.Math;
 public class Sphere {
-  private  Vector3 center;
+  public Sphere(Vector3 center, float radius)
+  {
+      this.radius = radius;
+      this.center = center;
+  }
+    private  Vector3 center;
   //(x-cx)^2+(y-cy)^2 +(z-cz)^2-R^2=0
   private float radius;
+
     //(p-c)*(p-c)-R^2=0;
     //p(t) = o+d*t - równanie promienia
     //(o+td-c)x(o+td-c)-R^2=0
