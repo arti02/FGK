@@ -1,3 +1,5 @@
+package fgk.zad1;
+
 public class Ray {
     //p(t)= origin + t*direction
   private Vector3 origin, direction, destination;

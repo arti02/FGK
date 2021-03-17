@@ -1,3 +1,5 @@
+package fgk.zad1;
+
 public class Surface {
     //Ax+By+Cz +D=0 <- równanie ogólne płaszczyzny
     //A, B i C nie mogą być jednocześnie równe 0 to są wartości wektora normalnego

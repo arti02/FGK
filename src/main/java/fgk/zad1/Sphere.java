@@ -1,3 +1,5 @@
+package fgk.zad1;
+
 import java.lang.Math;
 public class Sphere {
   private  Vector3 center;

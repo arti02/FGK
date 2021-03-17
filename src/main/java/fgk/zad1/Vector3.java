@@ -1,3 +1,5 @@
+package fgk.zad1;
+
 public class Vector3 {
     private float x;
     private float y;
