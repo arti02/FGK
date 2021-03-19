@@ -37,6 +37,7 @@ public class Ray {
         this.distance = distance;
     }
 
+    //Konstruktor promienia, który przyjmuje jako atrybuty wektor który określa początek promienia oraz wektor kierunkowy
     public  Ray(Vector3 origin, Vector3 direction)
     {
         this.origin =origin;

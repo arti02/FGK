@@ -28,7 +28,11 @@ public class Surface {
         this.normalPlaneVector = normalPlaneVector;
     }
 
-    //Równanie promienia X= Xr +t*v;
+
+     /*
+    Sprawdzanie czy promień
+    przecina  powierzchnię przez którą jest wywoływana metoda.
+     */
 
     public Vector3 checkSection(Ray ray)
     {
@@ -58,6 +62,11 @@ public class Surface {
             }
         }
     }
+    /*
+    Sprawdzanie czy promień o wektorze źródła równym
+    origin oraz wektorze kierunkowym równym direction
+    przecina  powierzchnię przez którą jest wywoływana metoda.
+    */
     public Vector3 checkSection(Vector3 origin, Vector3 direction)
     {
         float nDotV = this.normalPlaneVector.scalProd(direction);
