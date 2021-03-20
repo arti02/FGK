@@ -2,7 +2,7 @@ package fgk.zad1;
 
 import java.lang.Math;
 public class Sphere {
-    /*
+    /**
     Konstruktor sfery, argumenty pobierane to wektor określający środek sfery oraz promień sfery.
  */
   public Sphere(Vector3 center, float radius)
@@ -10,11 +10,15 @@ public class Sphere {
       this.radius = radius;
       this.center = center;
   }
-  //Wektor określający centrum
-    private  Vector3 center;
-    //Promień sfery
+
+    /**Wektor określający centrum
+     */
+  private  Vector3 center;
+    /**Promień sfery
+     *
+     */
   private float radius;
-  /*
+  /**
   Sprawdzanie czy promień o wektorze źródła równym
   origin oraz wektorze kierunkowym równym direction
   przecina  sferę przez którą jest wywoływana metoda.
@@ -50,7 +54,7 @@ public class Sphere {
           return  vector;
       }
   }
-    /*
+    /**
     Sprawdzanie czy promień
     przecina  sferę przez którą jest wywoływana metoda.
      */

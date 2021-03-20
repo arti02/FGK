@@ -1,9 +1,10 @@
 package fgk.zad1;
 
 public class Surface {
-    //Ax+By+Cz +D=0 <- równanie ogólne płaszczyzny
-    //A, B i C nie mogą być jednocześnie równe 0 to są wartości wektora normalnego
-    public Surface(Vector3 normalPlaneVector, float D)
+    /**Ax+By+Cz +D=0 <- równanie ogólne płaszczyzny
+     A, B i C nie mogą być jednocześnie równe 0 to są wartości wektora normalnego
+    */
+     public Surface(Vector3 normalPlaneVector, float D)
     {
         this.normalPlaneVector = normalPlaneVector;
         this.D=D;
@@ -29,7 +30,7 @@ public class Surface {
     }
 
 
-     /*
+     /**
     Sprawdzanie czy promień
     przecina  powierzchnię przez którą jest wywoływana metoda.
      */
@@ -62,7 +63,7 @@ public class Surface {
             }
         }
     }
-    /*
+    /**
     Sprawdzanie czy promień o wektorze źródła równym
     origin oraz wektorze kierunkowym równym direction
     przecina  powierzchnię przez którą jest wywoływana metoda.

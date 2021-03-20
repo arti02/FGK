@@ -2,20 +2,26 @@ package fgk.zad1;
 
 public class Main {
     public static void main(String[] args) {
-        //Definiowanie sfer, promieni i powierzchni
+        /**Definiowanie sfer, promieni i powierzchni
+         *
+         */
         Sphere S = new Sphere(new Vector3(0,0,0), 10);
         Ray R1= new Ray(new Vector3(0,0,-20), new Vector3(0,0,1));
         Ray R2 = new Ray(new Vector3(0,0,-20), new Vector3(0,1,0));
         Ray R3 = new Ray(new Vector3(0,20,10),new Vector3(0,-1,0));
         Surface P = new Surface(new Vector3(0,1,1), 0);
 
-        //Sprawdzanie czy promienie przecinają dane obiekty
+        /**Sprawdzanie czy promienie przecinają dane obiekty
+         *
+         */
         Vector3[] vec1=  S.checkSection(R1);
         Vector3[] vec2=  S.checkSection(R2);
         Vector3[] vec3=  S.checkSection(R3);
         Vector3 vec4 = P.checkSection(R2);
 
-        //Informowanie o  wyniku próby przecięcia danych obiektów
+        /**Informowanie o  wyniku próby przecięcia danych obiektów
+         *
+         */
         if(vec1!=null)
         {
            System.out.println("R1 przecina się w :");
