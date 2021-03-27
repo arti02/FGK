@@ -1,7 +1,9 @@
 package fgk.zad1.Basics;
 
-public class Ray {
-    //p(t)= origin + t*direction
+public  class  Ray {
+    /**p(t)= origin + t*direction
+     *
+     */
   private Vector3 origin, direction, destination;
   private  float distance;
 
@@ -37,7 +39,11 @@ public class Ray {
         this.distance = distance;
     }
 
-    //Konstruktor promienia, który przyjmuje jako atrybuty wektor który określa początek promienia oraz wektor kierunkowy
+    /**Konstruktor promienia, który przyjmuje jako atrybuty wektor który określa początek promienia oraz wektor kierunkowy
+     *
+     * @param origin
+     * @param direction
+     */
     public  Ray(Vector3 origin, Vector3 direction)
     {
         this.origin =origin;
