@@ -1,5 +1,10 @@
 package fgk.zad1;
 
+import fgk.zad1.Basics.Ray;
+import fgk.zad1.Basics.Sphere;
+import fgk.zad1.Basics.Surface;
+import fgk.zad1.Basics.Vector3;
+
 public class Main {
     public static void main(String[] args) {
         //Definiowanie sfer, promieni i powierzchni

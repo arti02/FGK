@@ -1,7 +1,7 @@
-package fgk.zad1;
+package fgk.zad1.Basics;
 
 import java.lang.Math;
-public class Sphere {
+public class Sphere{
     /*
     Konstruktor sfery, argumenty pobierane to wektor określający środek sfery oraz promień sfery.
  */

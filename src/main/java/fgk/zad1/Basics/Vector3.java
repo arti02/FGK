@@ -1,4 +1,4 @@
-package fgk.zad1;
+package fgk.zad1.Basics;
 
 public class Vector3 {
     private float x;

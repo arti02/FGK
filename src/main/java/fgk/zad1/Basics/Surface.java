@@ -1,6 +1,6 @@
-package fgk.zad1;
+package fgk.zad1.Basics;
 
-public class Surface {
+public class Surface implements GraphicsObject {
     //Ax+By+Cz +D=0 <- równanie ogólne płaszczyzny
     //A, B i C nie mogą być jednocześnie równe 0 to są wartości wektora normalnego
     public Surface(Vector3 normalPlaneVector, float D)
