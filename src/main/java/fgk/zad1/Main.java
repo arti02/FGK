@@ -1,9 +1,6 @@
 package fgk.zad1;
 
-import fgk.zad1.Basics.Ray;
-import fgk.zad1.Basics.Sphere;
-import fgk.zad1.Basics.Surface;
-import fgk.zad1.Basics.Vector3;
+import fgk.zad1.Basics.*;
 import fgk.zad1.Cameras.OrthogonalCamera;
 
 import java.io.IOException;
@@ -13,7 +10,7 @@ public class Main {
         /**Definiowanie sfer, promieni i powierzchni
          *
          */
-        Sphere S = new Sphere(new Vector3(0,0,0), 10f);
+        GraphicsObject S = new Sphere(new Vector3(0,0,20), 0.5f);
         Ray R1= new Ray(new Vector3(0,0,-20), new Vector3(0,0,1));
         Ray R2 = new Ray(new Vector3(0,0,-20), new Vector3(0,1,0));
         Ray R3 = new Ray(new Vector3(0,20,10),new Vector3(0,-1,0));
@@ -33,7 +30,7 @@ public class Main {
         LightIntensity lightIntensity=new LightIntensity(1,1,1);
         Image img=new Image(lightIntensity,320,240);
         OrthogonalCamera or=new OrthogonalCamera(img);
-        or.ortogonalCamera(img,S,0xffcc);
+        or.ortogonalShoot(img,S,0xfffc);
 
 //        /**Informowanie o  wyniku próby przecięcia danych obiektów
 //         *

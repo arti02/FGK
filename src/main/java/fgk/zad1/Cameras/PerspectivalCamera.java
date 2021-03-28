@@ -7,4 +7,5 @@ public class PerspectivalCamera extends Camera {
     public PerspectivalCamera(Image image) {
         super(image);
     }
+
 }

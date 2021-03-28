@@ -1,7 +1,7 @@
 package fgk.zad1.Basics;
 
 import java.lang.Math;
-public class Sphere{
+public class Sphere implements GraphicsObject{
     /*
     Konstruktor sfery, argumenty pobierane to wektor określający środek sfery oraz promień sfery.
  */
@@ -54,7 +54,7 @@ public class Sphere{
     Sprawdzanie czy promień
     przecina  sferę przez którą jest wywoływana metoda.
      */
-  public Vector3[] checkSection(Ray ray)
+ /* public Vector3[] checkSection(Ray ray)
   {
       Vector3 origin =ray.getOrigin();
       Vector3 direction = ray.getDirection();
@@ -86,8 +86,8 @@ public class Sphere{
           vector[1]= new Vector3(origin.getX()+direction.getX()*res2,origin.getY()+direction.getY()*res2,origin.getZ()+direction.getZ()*res2);
           return  vector;
       }
-  }
-    public Vector3 checkSectionFirst(Ray ray)
+  }*/
+    public Vector3 checkSection(Ray ray)
     {
         Vector3 origin =ray.getOrigin();
         Vector3 direction = ray.getDirection();
@@ -120,8 +120,6 @@ public class Sphere{
                 return new Vector3(origin.getX()+direction.getX()*res1,origin.getY()+direction.getY()*res1,origin.getZ()+direction.getZ()*res1);
             }else
                 return null;
-
-
         }
 
     }

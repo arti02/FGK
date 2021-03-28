@@ -1,9 +1,6 @@
 package fgk.zad1.Cameras;
 
-import fgk.zad1.Basics.Ray;
-import fgk.zad1.Basics.Sphere;
-import fgk.zad1.Basics.Surface;
-import fgk.zad1.Basics.Vector3;
+import fgk.zad1.Basics.*;
 import fgk.zad1.Image;
 
 import javax.imageio.ImageIO;
@@ -18,7 +15,7 @@ public class OrthogonalCamera extends Camera{
         super(image);
 
     }
-    public void  ortogonalCamera(Image image, Sphere sfera, int color1) throws IOException {
+    public void  ortogonalShoot(Image image, GraphicsObject graphicsObject,  int color1) throws IOException {
         Color color=image.getColor();
         int width=image.getWidth();
         int heigth= image.getHeight();
@@ -32,8 +29,8 @@ public class OrthogonalCamera extends Camera{
             for (int j = 0; j < heigth; j++) {
                 srodekX = -1.0f + (i + 0.5f) * pixelWidth ;
                 srodekY = 1.0f - (j + 0.5f) * pixelHeigth;
-                Ray ray = new Ray(new Vector3(0, 0, 1), new Vector3(srodekX, srodekY, 0));
-                Vector3 intersetion = sfera.checkSectionFirst(ray);
+                Ray ray = new Ray(new Vector3(srodekX, srodekY, 0),new Vector3(0, 0, 1) );
+                Vector3 intersetion = graphicsObject.checkSection(ray);
 
             if (intersetion != null)
              {
