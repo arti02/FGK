@@ -87,4 +87,42 @@ public class Sphere{
           return  vector;
       }
   }
+    public Vector3 checkSectionFirst(Ray ray)
+    {
+        Vector3 origin =ray.getOrigin();
+        Vector3 direction = ray.getDirection();
+        Vector3 oMinusC = center.vecSub(origin);
+        float A = direction.scalProd(direction);
+        float B = direction.scalProd(oMinusC)*2;
+        float C = oMinusC.scalProd(oMinusC)- (radius*radius);
+        float Delta = B*B-4*A*C;
+        //t = (-B + sqrt)/A
+        System.out.println(Delta);
+        if(Delta<0)
+        {
+            return null;
+        }
+        else if(Delta==0)
+        {
+            Vector3 vector ;
+            float t = (-1)*B/(2*A);
+            vector = new Vector3(origin.getX()+direction.getX()*t,origin.getY()+direction.getY()*t,origin.getZ()+direction.getZ()*t);
+            return  vector;
+        }
+        else
+        {
+            float res1 = (float)(((-1)*B+Math.sqrt(Delta))/(2*A));
+            float res2 = (float)(((-1)*B-Math.sqrt(Delta))/(2*A));
+
+            if (res1>res2&&res2>0){
+                return new Vector3(origin.getX()+direction.getX()*res2,origin.getY()+direction.getY()*res2,origin.getZ()+direction.getZ()*res2);
+            }else if (res1>0){
+                return new Vector3(origin.getX()+direction.getX()*res1,origin.getY()+direction.getY()*res1,origin.getZ()+direction.getZ()*res1);
+            }else
+                return null;
+
+
+        }
+
+    }
 }

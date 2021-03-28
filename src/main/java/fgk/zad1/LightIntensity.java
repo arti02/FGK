@@ -55,21 +55,21 @@ public class LightIntensity {
     }
     public void plusLight(double r, double g, double b)
     {
-        this.R =   Reductor.min(    this.R+=r, upperLightLimit);
+        this.R =   Reductor.min(this.R+=r, upperLightLimit);
         this.G =   Reductor.min(this.G+=g, upperLightLimit);
-        this.B =    Reductor.min( this.B+=b, upperLightLimit);
+        this.B =   Reductor.min(this.B+=b, upperLightLimit);
     }
     public void plusLight(double value)
     {
-        this.R =   Reductor.min(    this.R+=value, upperLightLimit);
+        this.R =   Reductor.min(this.R+=value, upperLightLimit);
         this.G =   Reductor.min(this.G+=value, upperLightLimit);
-        this.B =    Reductor.min( this.B+=value, upperLightLimit);
+        this.B =   Reductor.min(this.B+=value, upperLightLimit);
     }
     public void plusLight(LightIntensity lightIntensity)
     {
         this.R =   Reductor.min(this.R+= lightIntensity.getR(), upperLightLimit);
         this.G =   Reductor.min(this.G+= lightIntensity.getG(), upperLightLimit);
-        this.B =    Reductor.min(this.B+= lightIntensity.getB(), upperLightLimit);
+        this.B =   Reductor.min(this.B+= lightIntensity.getB(), upperLightLimit);
     }
     public void minusLight( double r, double g, double b)
     {
