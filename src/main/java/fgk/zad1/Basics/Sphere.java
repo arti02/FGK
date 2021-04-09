@@ -1,17 +1,31 @@
 package fgk.zad1.Basics;
 
+import fgk.zad1.Utilitis.ColorM;
+
+import java.awt.*;
 import java.lang.Math;
 public class Sphere implements GraphicsObject{
     /*
     Konstruktor sfery, argumenty pobierane to wektor określający środek sfery oraz promień sfery.
  */
-  public Sphere(Vector3 center, float radius)
+  public Sphere(Vector3 center, float radius, ColorM color)
   {
       this.radius = radius;
       this.center = center;
+      this.color = color;
   }
   //Wektor określający centrum
     private  Vector3 center;
+
+    public ColorM getColor() {
+        return color;
+    }
+
+    public void setColor(ColorM color) {
+        this.color = color;
+    }
+
+    ColorM color;
     //Promień sfery
   private float radius;
   /*
@@ -97,7 +111,6 @@ public class Sphere implements GraphicsObject{
         float C = oMinusC.scalProd(oMinusC)- (radius*radius);
         float Delta = B*B-4*A*C;
         //t = (-B + sqrt)/A
-        System.out.println(Delta);
         if(Delta<0)
         {
             return null;

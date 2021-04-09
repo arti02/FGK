@@ -19,6 +19,8 @@ public class Vector3 {
         this.z = 1;
     }
 
+
+
     public float getX() {
         return x;
     }
@@ -79,7 +81,7 @@ public class Vector3 {
      * @param vector
      * @return
      */
-    public Vector3 vecProd(Vector3 vector) {
+    public Vector3 vecCross(Vector3 vector) {
         float ax = this.getX();
         float ay = this.getY();
         float az = this.getZ();
@@ -116,7 +118,7 @@ public class Vector3 {
     public Vector3 normalizeProduct() throws Exception {
         Vector3 newV = new Vector3(this.x, this.y, this.z);
         float n = this.lengthOfVector();
-        if (n != 0) {
+        if (n == 0) {
             throw new Exception("Couldn't normalize");
         }
         newV.divByK(n);
@@ -136,10 +138,11 @@ public class Vector3 {
      *
      * @param k
      */
-    public void multByK(float k) {
+    public Vector3 multByK(float k) {
         this.x = this.getX() * k;
         this.y = this.getY() * k;
         this.z = this.getZ() * k;
+        return this;
     }
 
     /** dzielenie koordynat wektora przez koficjent K
@@ -215,9 +218,9 @@ public class Vector3 {
      * @return new Vector 3
      */
     public Vector3 vecSub(Vector3 vector1) {
-        float x = vector1.getX() - this.getX();
-        float y = vector1.getY() - this.getY();
-        float z = vector1.getZ() - this.getZ();
+        float x = this.getX()-vector1.getX();
+        float y = this.getY()-vector1.getY();
+        float z = this.getZ()-vector1.getZ();
         return new Vector3(x, y, z);
     }
 

@@ -2,51 +2,45 @@ package fgk.zad1.Cameras;
 import fgk.zad1.Basics.Vector3;
 import fgk.zad1.Image;
 
-public class Camera {
+
+public abstract class Camera {
     Image image;
 
     public Camera(Image image) {
         this.image = image;
     }
-}
-
-/*
-public abstract class Camera {
 
     // pozycja  położenie obserwatora w układzie xyz;
-     protected Vector3 position;
-     //Kierunek patrzenia kamery
-     protected Vector3 target;
-     //Vup - vup, wektor skierowany do góry kierunku obserwacji (jest to dowolny wektor
-     //przyczepiony na wektorze kierunku patrzenia g, określa on orientację położenia
-     //kamery, niejako czubek głowy obserwatora);
-     protected Vector3 up;
-     protected float nearPlane;
-     protected float farPlane;
-     //Field of view
-     protected float fov;
+    public Vector3 eye;
+    //Kierunek patrzenia kamery
+    public Vector3 lookat;
+    //odleglosc do plaszyzny rzutowania
+    public double distance;
+    //koordynaty camery
+    public Vector3 u,v,w;
 
+    //Obliczenie i normalizacja koordynat camery
+    public void compute_uvw(){
+        w=eye.vecSub(lookat);
+        w.normalize();
 
+        //Vup - vup, wektor skierowany do góry kierunku obserwacji (jest to dowolny wektor
+        //przyczepiony na wektorze kierunku patrzenia lookat, określa on orientację położenia
+        Vector3 up=new Vector3(0.00424f,1,0.00764f);
+        u=up.vecCross(w);
+        u.normalize();
 
-     public Vector3 getPosition() {
-        return position;
+        v=w.vecCross(u);
+        v.normalize();
+
     }
 
-    public Vector3 getTarget() {
-        return target;
-    }
 
-    public void setTarget(Vector3 target) {
-        this.target = target;
-    }
-
-    public Vector3 getUp() {
-        return up;
-    }
-
-    public void setUp(Vector3 up) {
-        this.up = up;
-    }
+    //kamery, niejako czubek głowy obserwatora);
+    protected float nearPlane;
+    protected float farPlane;
+    //Field of view
+    protected float fov;
 
     public float getNearPlane() {
         return nearPlane;
@@ -72,10 +66,7 @@ public abstract class Camera {
         this.fov = fov;
     }
 
-    public void setPosition(Vector3 position) {
-        this.position = position;
->>>>>>> Camera
-    }
 
- */
 
+
+}

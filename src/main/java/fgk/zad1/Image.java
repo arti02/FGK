@@ -10,6 +10,9 @@ public class Image {
     int height;
     int width;
     BufferedImage bufferedImage;
+    LightIntensity lightIntensity;
+
+
 
     /**konstructor obrazu
      *
@@ -20,6 +23,7 @@ public class Image {
    public Image(LightIntensity lightIntensity, int width, int height) throws IOException {
        this.height=height;
        this.width=width;
+       this.lightIntensity=lightIntensity;
        color = new Color((int)(lightIntensity.getR()*255), (int)(lightIntensity.getG()*255), (int)(lightIntensity.getB()*255));
         System.out.println(color);
         bufferedImage = new BufferedImage(width,height, BufferedImage.TYPE_INT_RGB);
@@ -45,5 +49,12 @@ public class Image {
     }
     public Color getColor() {
         return color;
+    }
+    public LightIntensity getLightIntensity() {
+        return lightIntensity;
+    }
+
+    public void setLightIntensity(LightIntensity lightIntensity) {
+        this.lightIntensity = lightIntensity;
     }
 }
