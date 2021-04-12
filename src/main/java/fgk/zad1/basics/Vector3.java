@@ -1,4 +1,4 @@
-package fgk.zad1.Basics;
+package fgk.zad1.basics;
 
 /**Stworzenie klasy wektor z 3 zmiennymi ktore okreslają koordynaty x,y,z
  */
@@ -19,6 +19,11 @@ public class Vector3 {
         this.z = 1;
     }
 
+    public Vector3 (Vector3 vector) {
+        this.x=vector.x;
+        this.y=vector.y;
+        this.z=vector.z;
+    }
 
 
     public float getX() {

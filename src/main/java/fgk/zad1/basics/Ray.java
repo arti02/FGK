@@ -1,4 +1,4 @@
-package fgk.zad1.Basics;
+package fgk.zad1.basics;
 
 public  class  Ray {
     /**p(t)= origin + t*direction
