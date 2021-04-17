@@ -23,7 +23,11 @@ public class Surface implements GraphicsObject {
         this.normalPlaneVector = normalPlaneVector;
         this.color = color;
     }
+    public Surface(Vector3 point,Vector3 normalPlaneVector) {
+        this.point=point;
+        this.normalPlaneVector = normalPlaneVector;
 
+    }
     public void setNormalPlaneVector(Vector3 normalPlaneVector) {
         this.normalPlaneVector = normalPlaneVector;
     }
@@ -54,7 +58,6 @@ public class Surface implements GraphicsObject {
 
     public Vector3 getNormalPlaneVector() {
         return normalPlaneVector;
-
     }
 //    /**
 //    Sprawdzanie czy promień o wektorze źródła równym

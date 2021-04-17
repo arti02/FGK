@@ -1,10 +1,7 @@
 package fgk.zad1.scene;
 
 
-import fgk.zad1.basics.GraphicsObject;
-import fgk.zad1.basics.Sphere;
-import fgk.zad1.basics.Surface;
-import fgk.zad1.basics.Vector3;
+import fgk.zad1.basics.*;
 import fgk.zad1.utilitis.Lightintencity;
 
 import java.util.ArrayList;
@@ -28,7 +25,21 @@ public class World {
         objects=new ArrayList<GraphicsObject>();
         objects.add(new Sphere(new Vector3(200,0,170),50,new Lightintencity(1f,0,0)));
         objects.add(new Sphere(new Vector3(0,0,0),200,new Lightintencity(0f,1f,0)));
+        objects.add(new Triangle(
+
+                new Vector3(200,0,0),
+                new Vector3(-300,0,0),
+                new Vector3(0,300,0),
+                new Lightintencity(0,0,0)));
 //        objects.add(new Surface(new Vector3(0,0,0),new Vector3(0,1,0.2f),new Lightintencity(1,1,0)));
 //        objects.add(new Sphere(new Vector3(-200,0,0),50,new Lightintencity(0f,0f,1f)));
     }
+    public World(int width,int heigth){
+        viewPlane=new ViewPlane(width,heigth, 1);
+        /**kolor tla
+         *
+         */
+        background= new Lightintencity(0.7f,0,0.4f);
+        objects=new ArrayList<GraphicsObject>();
+         }
 }
