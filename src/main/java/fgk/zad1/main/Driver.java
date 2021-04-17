@@ -1,5 +1,6 @@
 package fgk.zad1.main;
 
+import fgk.zad1.antyaliasing.AdaptiveSampler;
 import fgk.zad1.basics.Vector3;
 import fgk.zad1.cameras.Camera;
 import fgk.zad1.cameras.OrthogonalCamera;
@@ -20,19 +21,21 @@ public class Driver {
     public static void main(String[] args) throws Exception {
         world=new World(1600,800,1);
         image=new Image("MyImage.png");
-        tracer=new Tracer();
+        tracer= new Tracer();
+        sampler = new AdaptiveSampler(0.05f,0.05f,0.05f,100,100);
+         //sampler= new TeachSample(10);
         /**Liczba probek
          *
          */
-        sampler=new TeachSample(8);
+        //sampler=new AdaptiveSampler(0.05f);
         /**Definicja  camery
          */
-//        camera=new OrthogonalCamera();
-        camera=new PerspectivalCamera(new Vector3(0,0,600),new Vector3(0,0,0),30);
+       //camera=new OrthogonalCamera();
+      camera=new PerspectivalCamera(new Vector3(0,0,600),new Vector3(0,0,0),30);
         for (int x = 0; x <world.viewPlane.width; x++) {
             for (int y = 0; y < world.viewPlane.heigth; y++) {
-                tracer.trace(x,y);
-
+              //tracer.traceBruteForce(x,y);
+               tracer.adaptiveTrace(x,y);
             }
         }
             image.write("png");

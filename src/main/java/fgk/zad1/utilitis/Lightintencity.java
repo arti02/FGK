@@ -13,6 +13,11 @@ public class Lightintencity {
         g+=color.g;
         b+=color.b;
     }
+    public void sub(Lightintencity color){
+        r-= color.r;
+        g-=color.g;
+        b-=color.b;
+    }
 
 
     public void divide(int scalar){
