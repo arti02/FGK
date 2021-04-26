@@ -14,6 +14,8 @@ import fgk.zad1.scene.World;
 import fgk.zad1.utilitis.Image;
 import fgk.zad1.utilitis.Lightintencity;
 
+import static fgk.zad1.obj.ObjReader.readFile;
+
 public class Driver {
 
     public static World world;
@@ -23,13 +25,14 @@ public class Driver {
     public static Camera camera;
 
     public static void main(String[] args) throws Exception {
-      /*  world=new World(1600,800,1);
+
+        world=new World(1600,800,1);
         image=new Image("MyImage.png");
         tracer= new Tracer();
         sampler = new AdaptiveSampler(0.05f,0.05f,0.05f,100,100);
          //sampler= new TeachSample(10);
-        //camera=new OrthogonalCamera();
-      camera=new PerspectivalCamera(new Vector3(0,0,600),new Vector3(0,0,0),30);
+//        camera=new OrthogonalCamera();
+      camera=new PerspectivalCamera(new Vector3(0,0,300),new Vector3(100,0,0),30);
         for (int x = 0; x <world.viewPlane.width; x++) {
             for (int y = 0; y < world.viewPlane.heigth; y++) {
               //tracer.traceBruteForce(x,y);
@@ -39,22 +42,32 @@ public class Driver {
             image.write("png");
         }
 
-      Triangle test=  new Triangle(
-                new Vector3(-3,0,0),
-                new Vector3(2,0,0),
-                new Vector3(0,3,0),
-                new Lightintencity(0,0,0));
-      double surface = test.checkSection(new Ray(
-              new Vector3(0,0,-2),
-              new Vector3(0,0,1)));
-      Vector3 vector3 = test.checkSectionReturnVector(new Ray(
-                      new Vector3(0,0,-2),
-                      new Vector3(3,0,2)));
-        System.out.println(surface);
-        System.out.println(vector3.toString());
-        */
-        ObjReader.readFile("exampleScene.obj");
+
+
+
+//            ObjReader.readFile("exampleScene.obj");
     }
-    }
+
+//            String[] arrayOfString = string.split(" ");
+//            String figure="";
+//
+//            if (arrayOfString[0].equals("o")) {
+//                figure=arrayOfString[1];
+//
+//                while (true){
+//
+//                }
+//                String string2 = myReader.nextLine();
+//
+//                if (actualStringArray[0].equals("v") && actualStringArray.length == 4) {
+//
+//                        Vector3 vertex = new Vector3(Float.parseFloat(actualStringArray[1])
+//                                , Float.parseFloat(actualStringArray[2])
+//                                , Float.parseFloat(actualStringArray[3]));
+//                        vList.add(vertex);
+//
+//                    }
+//            }
+
 
 

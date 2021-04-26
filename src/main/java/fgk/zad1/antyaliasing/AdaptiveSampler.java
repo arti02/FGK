@@ -49,7 +49,7 @@ public class AdaptiveSampler extends Sampler {
             float b=0;
         for(int i =0;i<lightintencities.length-1;i++)
         {
-            System.out.println("XD");
+
                if (lightintencities[4].r-lightintencities[i].r>spartialRGB.r||lightintencities[4].g-lightintencities[i].g>spartialRGB.g||lightintencities[4].b-lightintencities[i].b>spartialRGB.b)
                 {
 
@@ -64,16 +64,12 @@ public class AdaptiveSampler extends Sampler {
 
                 }
         }
-
-
-
-
         return new Lightintencity(r/4,g/4,b/4);
     }
     void recursionStep(int recursion,Lightintencity centerLightIntencity, Lightintencity bLightIntencity, float r, float g, float b, Vector2 centerVector, Vector2 bVector)
     {
         recursion ++;
-        System.out.println(recursion);
+
         Vector2[] vectors = {new Vector2(centerVector.getX()+bVector.getX()/2,centerVector.getY()+bVector.getY()/2),
                 new Vector2(centerVector.getX(), bVector.getY()), new Vector2( bVector.getX(), centerVector.getY()) };
         Ray[] rays = {

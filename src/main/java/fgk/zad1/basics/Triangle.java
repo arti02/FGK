@@ -6,6 +6,14 @@ public class Triangle implements GraphicsObject {
     Vector3 vertex1, vertex2, vertex3, N;
     Lightintencity color;
 
+    public Triangle(Vector3 vertex1, Vector3 vertex2, Vector3 vertex3, Vector3 n, Lightintencity color) {
+        this.vertex1 = vertex1;
+        this.vertex2 = vertex2;
+        this.vertex3 = vertex3;
+        N = n;
+        this.color = color;
+    }
+
     public Triangle(Vector3 vertex1, Vector3 vertex2, Vector3 vertex3, Lightintencity lightintencity) {
         this.vertex1 = vertex1;
         this.vertex2 = vertex2;
@@ -16,13 +24,25 @@ public class Triangle implements GraphicsObject {
         this.color = lightintencity;
     }
 
+    /**Skalowanie trojkata
+     *
+     * @param k
+     * @return
+     */
+    public Triangle skale(int k){
+        getVertex1().multByK(k);
+        getVertex2().multByK(k);
+        getVertex3().multByK(k);
+        return this;
+    }
     @Override
     public double checkSection(Ray ray) {
 
         Vector3 originOfRay = ray.getOrigin();
-        Vector3 diretcionOfRay =  ray.getDirection();
+        Vector3 diretcionOfRay =ray.getDirection();
                 //Szukanie płaaszczyzny
         Surface surface = new Surface(vertex1,N);
+//        System.out.println(surface);
        double d =  surface.checkSection(ray);
         if(d>0) {
             Vector3 X = new Vector3(
@@ -55,7 +75,7 @@ public class Triangle implements GraphicsObject {
     public Vector3 checkSectionReturnVector(Ray ray) {
 
         Vector3 originOfRay = ray.getOrigin();
-        Vector3 diretcionOfRay =  ray.getDirection();
+        Vector3 diretcionOfRay = ray.getDirection();
         //Szukanie płaaszczyzny
         Surface surface = new Surface(vertex1,N);
         double d =  surface.checkSection(ray);
@@ -94,10 +114,6 @@ public class Triangle implements GraphicsObject {
     public Lightintencity getColor() {
         return color;
     }
-
-
-
-
 
     public Vector3 getVertex1() {
         return vertex1;

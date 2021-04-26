@@ -21,11 +21,27 @@ public class Surface implements GraphicsObject {
     public Surface(Vector3 point,Vector3 normalPlaneVector,  Lightintencity color) {
         this.point=point;
         this.normalPlaneVector = normalPlaneVector;
+        normalPlaneVector.normalize();
         this.color = color;
     }
+
+    @Override
+    public String toString() {
+        return "Surface{" +
+                "normalPlaneVector=" + normalPlaneVector +
+                ", point=" + point +
+                ", color=" + color +
+                '}';
+    }
+
+    /**Kostruktor Plaszczyzny
+     * @param normalPlaneVector
+     * @param point
+     */
     public Surface(Vector3 point,Vector3 normalPlaneVector) {
         this.point=point;
         this.normalPlaneVector = normalPlaneVector;
+        normalPlaneVector.normalize();
 
     }
     public void setNormalPlaneVector(Vector3 normalPlaneVector) {

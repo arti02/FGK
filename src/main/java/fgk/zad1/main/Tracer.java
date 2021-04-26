@@ -42,7 +42,7 @@ public class Tracer {
 
     public void adaptiveTrace(int x, int y) {
 
-        Driver.image.buffer.setRGB(x,y, Driver.sampler.sample(x,y).toIntneger());
+        Driver.image.buffer.setRGB(x,Driver.world.viewPlane.heigth - y -1, Driver.sampler.sample(x,y).toIntneger());
     }
 
 
