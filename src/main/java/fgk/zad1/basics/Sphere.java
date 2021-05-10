@@ -1,5 +1,6 @@
 package fgk.zad1.basics;
 
+import fgk.zad1.material.Material;
 import fgk.zad1.utilitis.Lightintencity;
 
 import java.lang.Math;
@@ -9,6 +10,10 @@ public class Sphere implements GraphicsObject {
      *
      */
     private Vector3 center;
+    /** Odwołanie do materiału
+     *
+     */
+    Material material;
     /**Color sfery
      */
     Lightintencity color;
@@ -24,6 +29,13 @@ public class Sphere implements GraphicsObject {
         this.radius = radius;
         this.center = center;
         this.color = color;
+        this.material= new Material(1,1,1,1,0.5f);
+    }
+    public Sphere(Vector3 center, float radius, Lightintencity color, Material material) {
+        this.radius = radius;
+        this.center = center;
+        this.color = color;
+        this.material= material;
     }
     public Lightintencity getColor() {
         return color;

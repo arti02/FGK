@@ -1,6 +1,8 @@
 package fgk.zad1.scene;
 
 
+import fgk.zad1.Lights.PointSource;
+import fgk.zad1.Lights.Source;
 import fgk.zad1.basics.*;
 import fgk.zad1.utilitis.Lightintencity;
 
@@ -20,6 +22,7 @@ public class World {
     public ViewPlane viewPlane;
     public List<GraphicsObject> objects;
     public Lightintencity background;
+    public List<Source> lights;
     public World(int width,int heigth, double sizeOfPixel) throws IOException {
         viewPlane=new ViewPlane(width,heigth, sizeOfPixel);
         /**kolor tla
@@ -29,10 +32,11 @@ public class World {
         /**List który przechowywuje wszystkie obiekty
          *
          */
-
+        lights = new ArrayList<>();
         objects=new ArrayList<GraphicsObject>();
         objects.add(new Sphere(new Vector3(700,0,170),50,new Lightintencity(1f,0,0)));
         objects.add(new Sphere(new Vector3(500,0,0),200,new Lightintencity(0f,1f,0)));
+        lights.add(new PointSource(new Vector3(1,0,0), new Vector3(500,0,170)));
 //        objects.add(new Triangle(new Vector3(200,0,0),
 //                new Vector3(-300,0,0),
 //                new Vector3(0,300,0),

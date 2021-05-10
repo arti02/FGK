@@ -37,7 +37,6 @@ public class Tracer {
             Driver.image.buffer.setRGB(x,Driver.world.viewPlane.heigth-y-1 ,Driver.world.background.toIntneger());
         }
 
-
     }
 
     public void adaptiveTrace(int x, int y) {
