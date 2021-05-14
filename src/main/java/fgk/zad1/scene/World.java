@@ -50,6 +50,7 @@ public class World {
          *
          */
         for (Triangle n:a){
+            System.out.println(n.toString());
             n.skale(40);
         }
         objects.addAll(a);

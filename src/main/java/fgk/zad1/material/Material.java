@@ -1,57 +1,79 @@
 package fgk.zad1.material;
 
+import fgk.zad1.basics.Vector3;
+
 public class Material {
-    private float AmbientCoe;
-    private  float SpecularCoe;
-    private  float TranssmitioNCoe;
-    private  float DiffuseCoe;
-    private float Roughness;
+    private Vector3 AmbientKa;
+    private  Vector3 SpecularKs;
+    private  float Ns;
+    private  Vector3 DiffuseKd;
+    private float Transparent_d;
 
-    public Material(float ambientCoe, float specularCoe, float transsmitioNCoe, float diffuseCoe, float roughness) {
-        AmbientCoe = ambientCoe;
-        SpecularCoe = specularCoe;
-        TranssmitioNCoe = transsmitioNCoe;
-        DiffuseCoe = diffuseCoe;
-        Roughness = roughness;
+    @Override
+    public String toString() {
+        return "Material{" +
+                "AmbientKa=" + AmbientKa +
+                ", SpecularKs=" + SpecularKs +
+                ", Ns=" + Ns +
+                ", DiffuseKd=" + DiffuseKd +
+                ", Transparent_d=" + Transparent_d +
+                '}';
     }
 
-    public float getAmbientCoe() {
-        return AmbientCoe;
+    public Material(float ns, Vector3 ambientKa, Vector3 specularCs, Vector3 diffuseKd, float transparent_d) {
+        Ns = ns;
+        AmbientKa = ambientKa;
+        SpecularKs = specularCs;
+        DiffuseKd = diffuseKd;
+        Transparent_d = transparent_d;
     }
 
-    public void setAmbientCoe(float ambientCoe) {
-        AmbientCoe = ambientCoe;
+    public Material(Vector3 ambientKa, Vector3 specularCs, Vector3 diffuseKd, float transparent_d) {
+        AmbientKa = ambientKa;
+        SpecularKs = specularCs;
+        DiffuseKd = diffuseKd;
+        Transparent_d = transparent_d;
     }
 
-    public float getSpecularCoe() {
-        return SpecularCoe;
+    public Vector3 getAmbientKa() {
+        return AmbientKa;
     }
 
-    public void setSpecularCoe(float specularCoe) {
-        SpecularCoe = specularCoe;
+    public void setAmbientKa(Vector3 ambientKa) {
+        AmbientKa = ambientKa;
     }
 
-    public float getTranssmitioNCoe() {
-        return TranssmitioNCoe;
+    public Vector3 getSpecularCs() {
+        return SpecularKs;
     }
 
-    public void setTranssmitioNCoe(float transsmitioNCoe) {
-        TranssmitioNCoe = transsmitioNCoe;
+    public void setSpecularCs(Vector3 specularCs) {
+        SpecularKs = specularCs;
     }
 
-    public float getDiffuseCoe() {
-        return DiffuseCoe;
+    public float getNs() {
+        return Ns;
     }
 
-    public void setDiffuseCoe(float diffuseCoe) {
-        DiffuseCoe = diffuseCoe;
+    public void setNs(float ns) {
+        Ns = ns;
     }
 
-    public float getRoughness() {
-        return Roughness;
+    public Vector3 getDiffuseKd() {
+        return DiffuseKd;
     }
 
-    public void setRoughness(float roughness) {
-        Roughness = roughness;
+    public void setDiffuseKd(Vector3 diffuseKd) {
+        DiffuseKd = diffuseKd;
     }
+
+    public float getTransparent_d() {
+        return Transparent_d;
+    }
+
+    public void setTransparent_d(float transparent_d) {
+        Transparent_d = transparent_d;
+    }
+
+
 }

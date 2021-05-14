@@ -1,17 +1,33 @@
 package fgk.zad1.basics;
 
+import fgk.zad1.material.Material;
 import fgk.zad1.utilitis.Lightintencity;
 
 public class Triangle implements GraphicsObject {
     Vector3 vertex1, vertex2, vertex3, N;
     Lightintencity color;
+    Material material;
 
-    public Triangle(Vector3 vertex1, Vector3 vertex2, Vector3 vertex3, Vector3 n, Lightintencity color) {
+
+    @Override
+    public String toString() {
+        return "Triangle{" +
+                "vertex1=" + vertex1 +
+                ", vertex2=" + vertex2 +
+                ", vertex3=" + vertex3 +
+                ", N=" + N +
+                ", color=" + color +
+                ", material=" + material +
+                '}';
+    }
+
+    public Triangle(Vector3 vertex1, Vector3 vertex2, Vector3 vertex3, Vector3 n, Lightintencity color, Material material) {
         this.vertex1 = vertex1;
         this.vertex2 = vertex2;
         this.vertex3 = vertex3;
         N = n;
         this.color = color;
+        this.material=material;
     }
 
     public Triangle(Vector3 vertex1, Vector3 vertex2, Vector3 vertex3, Lightintencity lightintencity) {

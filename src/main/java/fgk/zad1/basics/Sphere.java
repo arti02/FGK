@@ -29,7 +29,7 @@ public class Sphere implements GraphicsObject {
         this.radius = radius;
         this.center = center;
         this.color = color;
-        this.material= new Material(1,1,1,1,0.5f);
+     ;
     }
     public Sphere(Vector3 center, float radius, Lightintencity color, Material material) {
         this.radius = radius;
