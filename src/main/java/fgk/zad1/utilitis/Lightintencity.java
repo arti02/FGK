@@ -1,5 +1,7 @@
 package fgk.zad1.utilitis;
 
+import fgk.zad1.basics.Vector3;
+
 public class Lightintencity {
     public float r,g,b;
 
@@ -20,10 +22,19 @@ public class Lightintencity {
         this.g = lightintencity.g;
         this.b = lightintencity.b;
     }
+    public Lightintencity addVec(Lightintencity color){
+        Lightintencity lightintencity=new Lightintencity();
+        lightintencity.setR(this.getR() +color.getR());
+        lightintencity.setG(this.getG() +color.getG());
+        lightintencity.setB(this.getB() +color.getB());
+
+        return lightintencity;
+    }
     public void add(Lightintencity color){
-        r+= color.r;
-        g+=color.g;
-        b+=color.b;
+        this.setR(this.getR() +color.getR());
+        this.setG(this.getG() +color.getG());
+        this.setB(this.getB() +color.getB());
+
     }
     public void add(float r, float g, float b)
     {
@@ -31,6 +42,16 @@ public class Lightintencity {
         this.g +=g;
         this.b +=b;
     }
+    public Lightintencity multByK(float k)
+    {
+        Lightintencity lightintencity=new Lightintencity();
+        lightintencity.setR(this.getR() *k);
+        lightintencity.setG(this.getG() *k);
+        lightintencity.setB(this.getB() *k);
+
+        return lightintencity;
+    }
+
     public void sub(Lightintencity color){
         r-= color.r;
         g-=color.g;
@@ -45,7 +66,7 @@ public class Lightintencity {
         if(this.r<0)
         {
             return  0;
-        }
+        }else
         return this.r;
     }
     public float getG()
@@ -57,8 +78,10 @@ public class Lightintencity {
         if(this.g<0)
         {
             return  0;
+        }else {
+
+            return this.g;
         }
-        return this.g;
     }
     public float getB()
     {
@@ -72,7 +95,51 @@ public class Lightintencity {
         }
         return this.b;
     }
-    public void divide(int scalar){
+
+    public void setR(float r) {
+
+        if(r>1.0f)
+        {
+            this.r= 1;
+        }else
+        if(r<0)
+        {
+            this.r=  0;
+        }else {
+
+            this.r=r;
+        }
+
+    }
+
+    public void setG(float g) {
+        if(g>1)
+        {
+            this.g= 1;
+        }else
+            if(g<0)
+        {
+            this.g=  0;
+        }else {
+            this.g = g;
+        }
+    }
+
+    public void setB(float b) {
+        if(b>1)
+        {
+            this.b= 1;
+        }else
+        if(b<0)
+        {
+            this.b=  0;
+        }else {
+
+            this.b=b;
+        }
+    }
+
+    public void divideByK(float scalar){
 
         this.r/=scalar;
         this.g/=scalar;
@@ -81,7 +148,7 @@ public class Lightintencity {
 
     @Override
     public String toString() {
-        return "ColorM{" +
+        return "LightIntencity{" +
                 "r=" + r +
                 ", g=" + g +
                 ", b=" + b +

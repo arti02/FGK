@@ -30,7 +30,7 @@ public class Triangle implements GraphicsObject {
         this.material=material;
     }
 
-    public Triangle(Vector3 vertex1, Vector3 vertex2, Vector3 vertex3, Lightintencity lightintencity) {
+    public Triangle(Vector3 vertex1, Vector3 vertex2, Vector3 vertex3, Lightintencity lightintencity,Material material) {
         this.vertex1 = vertex1;
         this.vertex2 = vertex2;
         this.vertex3 = vertex3;
@@ -38,6 +38,7 @@ public class Triangle implements GraphicsObject {
         Vector3 AC = vertex3.vecSub(vertex1);
         this.N = AB.vecCross(AC);
         this.color = lightintencity;
+        this.material=material;
     }
 
     /**Skalowanie trojkata
@@ -129,6 +130,16 @@ public class Triangle implements GraphicsObject {
     @Override
     public Lightintencity getColor() {
         return color;
+    }
+
+    @Override
+    public Vector3 getNormal(Vector3 vec) {
+        return N;
+    }
+
+    @Override
+    public Material getMaterial() {
+        return material;
     }
 
     public Vector3 getVertex1() {

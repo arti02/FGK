@@ -1,5 +1,6 @@
 package fgk.zad1.basics;
 
+import fgk.zad1.material.Material;
 import fgk.zad1.utilitis.Lightintencity;
 
 public class Surface implements GraphicsObject {
@@ -52,11 +53,26 @@ public class Surface implements GraphicsObject {
         return color;
     }
 
+    @Override
+    public Vector3 getNormal(Vector3 vector3) {
+        return normalPlaneVector;
+    }
+
+    @Override
+    public Material getMaterial() {
+        return null;
+    }
+
     public void setColor(Lightintencity color) {
         this.color = color;
     }
 
-     /**
+    @Override
+    public Vector3 checkSectionReturnVector(Ray ray) {
+        return null;
+    }
+
+    /**
     Sprawdzanie czy promień
     przecina  powierzchnię przez którą jest wywoływana metoda.
      */

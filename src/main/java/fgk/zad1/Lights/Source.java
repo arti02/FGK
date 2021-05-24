@@ -9,9 +9,7 @@ public abstract class Source {
     Color color;
     public abstract void emiteLight();
 
-    public Lightintencity getLightintencity() {
-        return lightintencity;
-    }
+    public abstract Lightintencity getLightintencity();
 
     public void setLightintencity(Lightintencity lightintencity) {
         this.lightintencity = lightintencity;

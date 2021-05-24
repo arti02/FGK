@@ -135,6 +135,9 @@ public class ObjReader {
 //                }
                 if (tempVectors.size() == vector3s.length) {
                     for (int i = 0; i < vector3s.length - 2; i++) {
+//                        triangles.add(new Triangle(new Vector3(tempVectors.get(0)), new Vector3(tempVectors.get(1 + i)),
+//                                new Vector3(tempVectors.get(2 + i)), new Lightintencity(1f, 0f, 0f),new Material(Ns,AmbientKa,
+//                                SpecularKs,DiffuseKd,Transparent_d)));
                         triangles.add(new Triangle(new Vector3(tempVectors.get(0)), new Vector3(tempVectors.get(1 + i)),
                                 new Vector3(tempVectors.get(2 + i)), new Vector3(vn), new Lightintencity(1f, 0f, 0f),new Material(Ns,AmbientKa,
                                 SpecularKs,DiffuseKd,Transparent_d)));

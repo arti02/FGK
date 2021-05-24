@@ -34,6 +34,10 @@ public class Material {
         DiffuseKd = diffuseKd;
         Transparent_d = transparent_d;
     }
+    public Material(Vector3 specularCs, Vector3 diffuseKd){
+        SpecularKs = specularCs;
+        DiffuseKd = diffuseKd;
+    }
 
     public Vector3 getAmbientKa() {
         return AmbientKa;

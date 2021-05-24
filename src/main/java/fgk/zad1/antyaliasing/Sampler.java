@@ -6,6 +6,7 @@ import fgk.zad1.utilitis.Lightintencity;
 public abstract class Sampler {
     /**Liczba probek
      */
-    public int samples;
+    public float samples;
     public abstract Lightintencity sample(int x, int y);
+    public abstract Vector2 sampleNormal(int row,int col,int x,int y);
 }

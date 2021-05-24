@@ -1,6 +1,9 @@
 package fgk.zad1.main;
 
+import fgk.zad1.Lights.PointSource;
+import fgk.zad1.Lights.Source;
 import fgk.zad1.antyaliasing.AdaptiveSampler;
+import fgk.zad1.antyaliasing.RegularSample;
 import fgk.zad1.basics.Ray;
 import fgk.zad1.basics.Triangle;
 import fgk.zad1.basics.Vector3;
@@ -23,20 +26,24 @@ public class Driver {
     public static Tracer tracer;
     public static Sampler sampler;
     public static Camera camera;
+    public static Source source;
 
     public static void main(String[] args) throws Exception {
 
         world=new World(1600,800,1);
-        image=new Image("MyImage.png");
+        image=new Image("MyImage1.png");
         tracer= new Tracer();
-        sampler = new AdaptiveSampler(0.05f,0.05f,0.05f,100,100);
-         //sampler= new TeachSample(10);
-//        camera=new OrthogonalCamera();
-      camera=new PerspectivalCamera(new Vector3(0,0,300),new Vector3(100,0,0),30);
+//        sampler = new AdaptiveSampler(0.05f,0.05f,0.05f,100,100);
+          sampler= new RegularSample(1);
+//      camera=new OrthogonalCamera();
+      camera=new PerspectivalCamera(new Vector3(0,0,300),new Vector3(1,0,0),30);
+
+      source=new PointSource(new Vector3(0,1,0),new Vector3(100,100,0),new Lightintencity(1,0,0));
+
         for (int x = 0; x <world.viewPlane.width; x++) {
             for (int y = 0; y < world.viewPlane.heigth; y++) {
-              //tracer.traceBruteForce(x,y);
-               tracer.adaptiveTrace(x,y);
+              tracer.traceBruteForce(x,y,source);
+//               tracer.adaptiveTrace(x,y);
             }
         }
             image.write("png");
@@ -48,26 +55,6 @@ public class Driver {
 //            ObjReader.readFile("exampleScene.obj");
     }
 
-//            String[] arrayOfString = string.split(" ");
-//            String figure="";
-//
-//            if (arrayOfString[0].equals("o")) {
-//                figure=arrayOfString[1];
-//
-//                while (true){
-//
-//                }
-//                String string2 = myReader.nextLine();
-//
-//                if (actualStringArray[0].equals("v") && actualStringArray.length == 4) {
-//
-//                        Vector3 vertex = new Vector3(Float.parseFloat(actualStringArray[1])
-//                                , Float.parseFloat(actualStringArray[2])
-//                                , Float.parseFloat(actualStringArray[3]));
-//                        vList.add(vertex);
-//
-//                    }
-//            }
 
 
 

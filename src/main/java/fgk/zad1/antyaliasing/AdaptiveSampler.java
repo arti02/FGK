@@ -69,6 +69,12 @@ public class AdaptiveSampler extends Sampler {
 ///Check with lights
         return new Lightintencity(r/4,g/4,b/4);
     }
+
+    @Override
+    public Vector2 sampleNormal(int row, int col, int x, int y) {
+        return null;
+    }
+
     void recursionStep(int recursion,Lightintencity centerLightIntencity, Lightintencity bLightIntencity, float r, float g, float b, Vector2 centerVector, Vector2 bVector)
     {
         recursion ++;
@@ -88,9 +94,9 @@ public class AdaptiveSampler extends Sampler {
         for(int i =1;i<lightintencities.length-1;i++)
         {
 
-            if((lightintencities[1].r -lightintencities[i].r)>0)
+            if((lightintencities[1].getR() -lightintencities[i].r)>0)
             System.out.println((lightintencities[1].r -lightintencities[i].r));
-            if((lightintencities[1].g -lightintencities[i].g)>0)
+            if((lightintencities[1].getG() -lightintencities[i].g)>0)
                 System.out.println((lightintencities[1].r -lightintencities[i].r));
             if((lightintencities[1].b -lightintencities[i].b)>0)
                 System.out.println((lightintencities[1].r -lightintencities[i].r));

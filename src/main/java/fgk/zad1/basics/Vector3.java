@@ -181,10 +181,12 @@ public class Vector3 {
      *
      * @param substract
      */
-    public void scalSub(float substract) {
-        this.x = this.getX() - substract;
-        this.y = this.getY() - substract;
-        this.z = this.getZ() - substract;
+    public Vector3 scalSub(float substract) {
+        Vector3 vec=new Vector3();
+        vec.x = this.getX() - substract;
+        vec.y = this.getY() - substract;
+        vec.z = this.getZ() - substract;
+        return vec;
     }
 
     /** mnozenie koordynat wektora przez koficjent X z utworzeniem nowego vektora
