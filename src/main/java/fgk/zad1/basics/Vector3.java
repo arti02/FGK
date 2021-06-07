@@ -115,11 +115,21 @@ public class Vector3 {
 
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if(( (Vector3)obj).getX() == this.getX()&&( (Vector3)obj).getY() == this.getY()&&( (Vector3)obj).getZ() == this.getZ())
+        {
+            return true;
+        }
+        return false;
+    }
+
     /**Znormalizowanie wektora z utworzeniem nowego wektora
      *
      * @return  new Vector3
      * @throws Exception "Couldn't normalize"
      */
+
     public Vector3 normalizeProduct() throws Exception {
         Vector3 newV = new Vector3(this.x, this.y, this.z);
         float n = this.lengthOfVector();

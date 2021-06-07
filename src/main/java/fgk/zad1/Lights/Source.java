@@ -23,4 +23,5 @@ public abstract class Source {
     public void setColor(Color color) {
         this.color = color;
     }
+
 }
