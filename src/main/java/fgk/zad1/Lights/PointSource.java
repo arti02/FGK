@@ -16,20 +16,17 @@ public class PointSource extends  Source{
     float Op;
 
 
-    @Override
-    public void emiteLight() {
 
-    }
 
     @Override
     public Lightintencity getLightintencity() {
         return sourceIntencity;
     }
 
-    public PointSource(Vector3 direction, Vector3 sourcePoint,Lightintencity sourceIntencity)
+    public PointSource( Vector3 sourcePoint,Lightintencity sourceIntencity)
     {
 
-        this.direction = direction;
+
         this.sourcePoint = sourcePoint;
         this.sourceIntencity=sourceIntencity;
     }

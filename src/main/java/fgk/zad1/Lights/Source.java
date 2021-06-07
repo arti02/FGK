@@ -1,5 +1,6 @@
 package fgk.zad1.Lights;
 
+import fgk.zad1.basics.Vector3;
 import fgk.zad1.utilitis.Lightintencity;
 
 import java.awt.*;
@@ -7,7 +8,6 @@ import java.awt.*;
 public abstract class Source {
     Lightintencity lightintencity;
     Color color;
-    public abstract void emiteLight();
 
     public abstract Lightintencity getLightintencity();
 
@@ -15,6 +15,7 @@ public abstract class Source {
         this.lightintencity = lightintencity;
     }
 
+    public abstract Vector3 getSourcePoint();
     public Color getColor() {
         return color;
     }

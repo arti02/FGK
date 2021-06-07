@@ -134,9 +134,9 @@ public class Vector3 {
      *
      */
     public void negate() {
-        this.x = -this.x;
-        this.y = -this.y;
-        this.z = -this.z;
+        setX(-this.x);
+        setY( -this.y);
+        setZ( -this.z);
     }
 
     /**  mnozenie koordynat wektora przez koficjent K
@@ -144,9 +144,9 @@ public class Vector3 {
      * @param k
      */
     public Vector3 multByK(float k) {
-        this.x = this.getX() * k;
-        this.y = this.getY() * k;
-        this.z = this.getZ() * k;
+        this.x=this.getX() * k;
+        this.y=this.getY() * k;
+        this.z= this.getZ() * k;
         return this;
     }
 
@@ -312,12 +312,11 @@ public class Vector3 {
 
     /** Reflekcja wektora
      *
-     * @param normal1
      * @param normal2
      * @return Vector3
      */
-    public static Vector3 reflect(Vector3 normal1, Vector3 normal2) {
-        return normal1.vecSub(normal2.scalMulti(2 * normal1.scalProd(normal2)));
+    public  Vector3 reflect(Vector3 normal2) {
+        return this.vecSub(normal2.scalMulti(2 * this.scalProd(normal2)));
     }
 
     /**Tworzenie punkta

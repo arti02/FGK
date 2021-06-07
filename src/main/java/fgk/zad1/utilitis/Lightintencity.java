@@ -22,6 +22,14 @@ public class Lightintencity {
         this.g = lightintencity.g;
         this.b = lightintencity.b;
     }
+
+    public Lightintencity(Vector3 vector3) {
+        this.setR(vector3.getX());
+        this.setG(vector3.getY());
+        this.setB(vector3.getZ());
+
+    }
+
     public Lightintencity addVec(Lightintencity color){
         Lightintencity lightintencity=new Lightintencity();
         lightintencity.setR(this.getR() +color.getR());
@@ -48,6 +56,36 @@ public class Lightintencity {
         lightintencity.setR(this.getR() *k);
         lightintencity.setG(this.getG() *k);
         lightintencity.setB(this.getB() *k);
+
+        return lightintencity;
+    }
+    public Lightintencity multByLight(Lightintencity k)
+    {
+        Lightintencity lightintencity=new Lightintencity();
+//        if (k.getR()<0){
+//            lightintencity.setR(this.getR() *1);
+//        }else {
+            lightintencity.setR(this.getR() *k.getR());
+//        }
+//        if (k.getG()<0){
+            lightintencity.setG(this.getG() *1);
+//        }else {
+            lightintencity.setG(this.getG() *k.getG());
+//        }
+//        if (k.getB()<0){
+//            lightintencity.setB(this.getB() *1);
+//        }else {
+            lightintencity.setB(this.getB() *k.getB());
+//        }
+
+        return lightintencity;
+    }
+    public Lightintencity divByLight(Lightintencity k)
+    {
+        Lightintencity lightintencity=new Lightintencity();
+        lightintencity.setR(this.getR() /k.getR());
+        lightintencity.setG(this.getG() /k.getG());
+        lightintencity.setB(this.getB() /k.getB());
 
         return lightintencity;
     }
@@ -139,11 +177,12 @@ public class Lightintencity {
         }
     }
 
-    public void divideByK(float scalar){
+    public Lightintencity divideByK(float scalar){
 
         this.r/=scalar;
         this.g/=scalar;
         this.b/=scalar;
+        return this;
     }
 
     @Override

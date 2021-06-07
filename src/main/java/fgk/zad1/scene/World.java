@@ -29,33 +29,31 @@ public class World {
         /**kolor tla
          *
          */
-        background= new Lightintencity(0,0,0);
+        background= new Lightintencity(0,0,0.1f);
         /**List który przechowywuje wszystkie obiekty
          *
          */
         lights = new ArrayList<>();
         objects=new ArrayList<GraphicsObject>();
-        //objects.add(new Sphere(new Vector3(700,0,170),50,new Lightintencity(1f,0,0)));
-        //objects.add(new Sphere(new Vector3(500,0,0),200,new Lightintencity(0f,1f,0)));
-//        objects.add(new Triangle(new Vector3(200,0,0),
-//                new Vector3(-300,0,0),
-//                new Vector3(0,300,0),
-//                new Lightintencity(0.2f,0,0)));
+
         /**Wczytywanie pliku z OBJ
          *
          */
-//        Mesh mesh=readFile("Sfere1.obj");
+//      Mesh mesh=readFile("Sfere1.obj");
 //        List<Triangle> a=mesh.getList();
-//        /**Skalowanie
-//         *
-//         */
+////        /**Skalowanie
+////         *
+//////         */
 //        for (Triangle n:a){
 //            System.out.println(n.toString());
-//            n.skale(70);
+//            n.skale(30);
 //        }
 //        objects.addAll(a);
-//        objects.add(new Surface(new Vector3(0,0,0),new Vector3(0,1,0),new Lightintencity(1,1,0)));
-        objects.add(new Sphere(new Vector3(0,0,200),50,new Lightintencity(0f,0f,1f),new Material(new Vector3(1f,0.6f,0.6f),new Vector3(0.2f,0.6f,0.6f))));
+//   objects.add(new Surface(new Vector3(0,0,0),new Vector3(0,1,0),new Lightintencity(1,1,0)));
+       objects.add(new Sphere(new Vector3(-100,0,200),50,new Lightintencity(0.5f,0.1f,1),
+               new Material(new Vector3(1f,0.6f,0.6f),new Vector3(0.6f,01.f,0.6f))));
+        objects.add(new Sphere(new Vector3(100,0,200),50,new Lightintencity(0f,0.7f,0.4f),
+                new Material(new Vector3(1f,0.6f,0.6f),new Vector3(0.6f,01.f,0.6f))));
     }
 
 }

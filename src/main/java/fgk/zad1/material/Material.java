@@ -34,8 +34,8 @@ public class Material {
         DiffuseKd = diffuseKd;
         Transparent_d = transparent_d;
     }
-    public Material(Vector3 specularCs, Vector3 diffuseKd){
-        SpecularKs = specularCs;
+    public Material(Vector3 specularKs, Vector3 diffuseKd){
+        SpecularKs = specularKs;
         DiffuseKd = diffuseKd;
     }
 
@@ -47,7 +47,7 @@ public class Material {
         AmbientKa = ambientKa;
     }
 
-    public Vector3 getSpecularCs() {
+    public Vector3 getSpecularKs() {
         return SpecularKs;
     }
 

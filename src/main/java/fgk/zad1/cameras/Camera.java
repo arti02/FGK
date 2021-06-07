@@ -38,13 +38,13 @@ public abstract class Camera {
 
         //przyczepiony na wektorze kierunku patrzenia lookat, określa on orientację położenia
         //Vup - vup, wektor skierowany do góry kierunku obserwacji (jest to dowolny wektor)
-        Vector3 up=new Vector3(0.00424f,1,0.00764f);
+        Vector3 up=new Vector3(0,1,0);
         u=up.vecCross(w);
         u.normalize();
 
         v=w.vecCross(u);
         v.normalize();
-
+        System.out.println(w.toString()+u.toString()+v);
     }
 
 }

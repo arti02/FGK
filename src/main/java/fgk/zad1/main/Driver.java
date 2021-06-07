@@ -31,19 +31,19 @@ public class Driver {
     public static void main(String[] args) throws Exception {
 
         world=new World(1600,800,1);
-        image=new Image("MyImage1.png");
+        image=new Image("MyImage3.png");
         tracer= new Tracer();
-//        sampler = new AdaptiveSampler(0.05f,0.05f,0.05f,100,100);
+    //    sampler = new AdaptiveSampler(0.05f,0.05f,0.05f,100,100);
           sampler= new RegularSample(1);
-//      camera=new OrthogonalCamera();
-      camera=new PerspectivalCamera(new Vector3(0,0,300),new Vector3(1,0,0),30);
+        //camera=new OrthogonalCamera();
+      camera=new PerspectivalCamera(new Vector3(0,0,400),new Vector3(0,0,0),60);
 
-      source=new PointSource(new Vector3(0,1,0),new Vector3(100,100,0),new Lightintencity(1,0,0));
+      source=new PointSource(new Vector3(100,0,700),new Lightintencity(1,1,1));
 
         for (int x = 0; x <world.viewPlane.width; x++) {
             for (int y = 0; y < world.viewPlane.heigth; y++) {
               tracer.traceBruteForce(x,y,source);
-//               tracer.adaptiveTrace(x,y);
+              // tracer.adaptiveTrace(x,y);
             }
         }
             image.write("png");

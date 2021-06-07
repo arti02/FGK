@@ -17,8 +17,8 @@ public class RegularSample extends Sampler {
     }
     public Vector2 sampleNormal(int row,int col,int x,int y){
         Vector2 vector2=new Vector2();
-        vector2.x= (float) (x- Driver.world.viewPlane.width*0.5+(col+0.5)/samples);
-        vector2.y= (float) (y- Driver.world.viewPlane.heigth*0.5+(row+0.5)/samples);
+        vector2.x= (float) (x- Driver.world.viewPlane.width*0.5+(row+0.5)/samples);
+        vector2.y= (float) (y- Driver.world.viewPlane.heigth*0.5+(col+0.5)/samples);
         return vector2;
     }
 }
