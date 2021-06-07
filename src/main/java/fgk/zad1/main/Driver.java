@@ -34,16 +34,16 @@ public class Driver {
     public static void main(String[] args) throws Exception {
 
         world=new World(1600,800,1);
-        image=new Image("MyImage12.png");
+        image=new Image("MyImage13.png");
         tracer= new Tracer();
     //    sampler = new AdaptiveSampler(0.05f,0.05f,0.05f,100,100);
           sampler= new RegularSample(1);
         //camera=new OrthogonalCamera();
       camera=new PerspectivalCamera(new Vector3(0,0,400),new Vector3(0,0,0),60);
 
-      listOfSources.add(new PointSource(new Vector3(0,100,200),new Lightintencity(0.5f,0.5f,0.5f)));
+      listOfSources.add(new PointSource(new Vector3(250,100,100),new Lightintencity(0.5f,0.5f,0.5f),1));
 
-        listOfSources.add(new PointSource(new Vector3(0,-200,-200),new Lightintencity(1,1,1)));
+    //    listOfSources.add(new PointSource(new Vector3(0,-200,-200),new Lightintencity(1,1,1)));
 
         for (int x = 0; x <world.viewPlane.width; x++) {
             for (int y = 0; y < world.viewPlane.heigth; y++) {

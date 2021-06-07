@@ -1,5 +1,7 @@
 package fgk.zad1.basics;
 
+import fgk.zad1.main.Driver;
+
 public  class  Ray {
     /**p(t)= origin + t*direction
      *
@@ -48,6 +50,23 @@ public  class  Ray {
     {
         this.origin =origin;
         this.direction = direction;
+    }
+    public GraphicsObject checkFirstIntersectObject()
+    {
+        GraphicsObject graphicsObject = null;
+        double distance = Double.MAX_VALUE;
+        for (GraphicsObject object:Driver.world.objects
+             ) {
+              double distancev2 = object.checkSection(this);
+
+                if (distance>distancev2&&distancev2!=0)
+                {
+                    distance = distancev2;
+                    graphicsObject = object;
+                }
+            
+        }
+        return graphicsObject;
     }
 
 }

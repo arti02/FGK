@@ -8,6 +8,7 @@ import java.awt.*;
 public abstract class Source {
     Lightintencity lightintencity;
     Color color;
+    public float shiness = 0f;
 
     public abstract Lightintencity getLightintencity();
 

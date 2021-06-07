@@ -50,10 +50,12 @@ public class World {
 //        }
 //        objects.addAll(a);
 //   objects.add(new Surface(new Vector3(0,0,0),new Vector3(0,1,0),new Lightintencity(1,1,0)));
-        objects.add(new Sphere(new Vector3(100,0,100),60,new Lightintencity(0f,0.7f,0.4f),
-                new Material(new Vector3(1f,0.6f,0.6f),new Vector3(0.6f,01.f,0.6f))));
-        objects.add(new Sphere(new Vector3(-100,0,0),70,new Lightintencity(0.5f,0.1f,1),
-              new Material(new Vector3(1f,0.6f,0.6f),new Vector3(0.6f,01.f,0.6f))));
+        objects.add(new Sphere(new Vector3(100,0,100),40,new Lightintencity(0f,1f,0f),
+                new Material(new Vector3(0.6f,01.f,0.6f),new Vector3(1f,0.6f,0.6f),new Vector3(0.6f,01.f,0.6f), 5f)));
+        objects.add(new Sphere(new Vector3(-100,0,100),80,new Lightintencity(1f,0f,0),
+              new Material(new Vector3(0.6f,01.f,0.6f),new Vector3(1f,0.6f,0.6f),new Vector3(0.6f,01.f,0.6f),5f)));
+        objects.add(new Sphere(new Vector3(-100,0,100),1,new Lightintencity(1f,0f,0),
+                new Material(new Vector3(0.6f,01.f,0.6f),new Vector3(1f,0.6f,0.6f),new Vector3(0.6f,01.f,0.6f),5f)));
 
     }
 

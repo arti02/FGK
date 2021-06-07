@@ -23,10 +23,10 @@ public class PointSource extends  Source{
         return sourceIntencity;
     }
 
-    public PointSource( Vector3 sourcePoint,Lightintencity sourceIntencity)
+    public PointSource( Vector3 sourcePoint,Lightintencity sourceIntencity, float shiness)
     {
 
-
+        super.shiness = shiness;
         this.sourcePoint = sourcePoint;
         this.sourceIntencity=sourceIntencity;
     }
