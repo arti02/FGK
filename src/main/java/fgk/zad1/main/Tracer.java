@@ -103,7 +103,7 @@ public class Tracer {
                         // due to the normalize function's reciprocal square root
                         Vector3 viewDir=new Vector3(intersetion.normalizeProduct());
 //                        viewDir.negate();
-//
+                        viewDir.normalize();
 
                         Vector3 H = viewDir.vecAdd(lightDir.multByK(3));
                         H.normalize();
