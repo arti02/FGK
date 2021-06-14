@@ -326,7 +326,9 @@ public class Vector3 {
      * @return Vector3
      */
     public  Vector3 reflect(Vector3 normal2) {
-        return this.vecSub(normal2.scalMulti(2 * this.scalProd(normal2)));
+        return this.vecSub(
+                normal2.scalMulti(2 ).
+                        scalMulti( this.scalProd(normal2)));
     }
 
     /**Tworzenie punkta
@@ -352,6 +354,7 @@ public class Vector3 {
         vector.z = this.z + t * (v.z - this.z);
         return vector;
     }
+
 
 
 }

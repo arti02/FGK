@@ -122,8 +122,44 @@ public class Sphere implements GraphicsObject {
             float res2 = (float)   (-B - Math.sqrt(Delta)) / (2 * A);
             vector[0] = new Vector3(origin.getX() + direction.getX() * res1, origin.getY() + direction.getY() * res1, origin.getZ() + direction.getZ() * res1);
             vector[1] = new Vector3(origin.getX() + direction.getX() * res2, origin.getY() + direction.getY() * res2, origin.getZ() + direction.getZ() * res2);
+            if(vector[0].lengthOfVector()>vector[1].lengthOfVector())
+            {
+                return vector[0];
+            }
+            return vector[1];
 
+        }
+    }
 
+    @Override
+    public Vector3 checkSectionReturnVectorTransparent(Ray ray) {
+        Vector3 origin = ray.getOrigin();
+        Vector3 direction = ray.getDirection();
+        Vector3 oMinusC = origin.vecSub(center);
+        float A = direction.scalProd(direction);
+        float B = 2 * oMinusC.scalProd(direction);
+        float C = (oMinusC.scalProd(oMinusC)) - radius * radius;
+        float Delta = B * B - 4 * A * C;
+        //t = (-B + sqrt)/A
+
+        if (Delta < 0) {
+            return null;
+        } else if (Delta == 0) {
+            Vector3[] vector = new Vector3[1];
+            float t = (float) ((-B - Math.sqrt(Delta)) / (2 * A));
+            vector[0] = new Vector3(origin.getX() + direction.getX() * t, origin.getY() + direction.getY() * t, origin.getZ() + direction.getZ() * t);
+            return vector[0];
+        } else {
+            Vector3[] vector = new Vector3[2];
+            float[] result = new float[2];
+            float res1 = (float) (- B + Math.sqrt(Delta)) / (2 * A);
+            float res2 = (float)   (-B - Math.sqrt(Delta)) / (2 * A);
+            vector[0] = new Vector3(origin.getX() + direction.getX() * res1, origin.getY() + direction.getY() * res1, origin.getZ() + direction.getZ() * res1);
+            vector[1] = new Vector3(origin.getX() + direction.getX() * res2, origin.getY() + direction.getY() * res2, origin.getZ() + direction.getZ() * res2);
+            if(vector[0].lengthOfVector()<vector[1].lengthOfVector())
+            {
+                return vector[0];
+            }
             return vector[1];
 
         }
@@ -137,7 +173,7 @@ public class Sphere implements GraphicsObject {
      * @param ray
      * @return
      */
-    public double checkSection(Ray ray) {
+    public float checkSection(Ray ray) {
         Vector3 origin = ray.getOrigin();
         Vector3 direction = ray.getDirection();
         Vector3 oMinusC = origin.vecSub(center);
@@ -149,7 +185,7 @@ public class Sphere implements GraphicsObject {
         if (Delta < 0) {
             return 0;
         } else {
-            return (-B - Math.sqrt(Delta)) / (2 * A);
+            return (float) (-B - Math.sqrt(Delta)) / (2 * A);
         }
 
 

@@ -8,6 +8,8 @@ public class Material {
     private  float Ns;
     private  Vector3 DiffuseKd;
     private float Transparent_d;
+    public boolean mirror;
+    public boolean transparent;
 
     @Override
     public String toString() {
@@ -37,6 +39,14 @@ public class Material {
     public Material(Vector3 specularKs, Vector3 diffuseKd){
         SpecularKs = specularKs;
         DiffuseKd = diffuseKd;
+    }
+    public Material(Vector3 ambientKa, Vector3 specularCs, Vector3 diffuseKd, float transparent_d, boolean mirror, boolean transparent) {
+        this.mirror = mirror;
+        this.transparent =transparent;
+        AmbientKa = ambientKa;
+        SpecularKs = specularCs;
+        DiffuseKd = diffuseKd;
+        Transparent_d = transparent_d;
     }
 
     public Vector3 getAmbientKa() {

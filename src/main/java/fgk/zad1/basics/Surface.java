@@ -13,16 +13,17 @@ public class Surface implements GraphicsObject {
     /**Color swiatla
      */
     private Lightintencity color;
-
+    private Material material;
     /**Kostruktor Plaszczyzny
      * @param normalPlaneVector
      * @param point
      * @param color
      */
-    public Surface(Vector3 point,Vector3 normalPlaneVector,  Lightintencity color) {
+    public Surface(Vector3 point,Vector3 normalPlaneVector,  Lightintencity color, Material material) {
+        this.material =material;
         this.point=point;
         this.normalPlaneVector = normalPlaneVector;
-        normalPlaneVector.normalize();
+        this.normalPlaneVector.normalize();
         this.color = color;
     }
 
@@ -42,7 +43,7 @@ public class Surface implements GraphicsObject {
     public Surface(Vector3 point,Vector3 normalPlaneVector) {
         this.point=point;
         this.normalPlaneVector = normalPlaneVector;
-        normalPlaneVector.normalize();
+        this.normalPlaneVector.normalize();
 
     }
     public void setNormalPlaneVector(Vector3 normalPlaneVector) {
@@ -60,25 +61,29 @@ public class Surface implements GraphicsObject {
 
     @Override
     public Material getMaterial() {
-        return null;
+        return material;
     }
 
     public void setColor(Lightintencity color) {
         this.color = color;
     }
 
-    @Override
-    public Vector3 checkSectionReturnVector(Ray ray) {
-        return null;
-    }
+
 
     /**
     Sprawdzanie czy promień
     przecina  powierzchnię przez którą jest wywoływana metoda.
      */
 
-    public double checkSection(Ray ray) {
-        return point.vecSub(ray.getOrigin()).scalProd(normalPlaneVector)/ray.getDirection().scalProd(normalPlaneVector);
+    public float checkSection(Ray ray) {
+        double xd  =(this.getNormalPlaneVector().scalProd(this.point)-(this.getNormalPlaneVector().scalProd(ray.getOrigin())))/
+                (this.getNormalPlaneVector().scalProd(ray.getDirection())); //   double xd =point.vecSub(ray.getOrigin()).scalProd(normalPlaneVector)/ray.getDirection().scalProd(normalPlaneVector);
+        if(xd>0)
+        {
+            return (float)xd;
+        }
+        else
+            return 0;
     }
     public Vector3 getPoint() {
         return point;
@@ -91,30 +96,26 @@ public class Surface implements GraphicsObject {
     public Vector3 getNormalPlaneVector() {
         return normalPlaneVector;
     }
-//    /**
-//    Sprawdzanie czy promień o wektorze źródła równym
-//    origin oraz wektorze kierunkowym równym direction
-//    przecina  powierzchnię przez którą jest wywoływana metoda.
-//    */
-//    public Vector3 checkSection(Vector3 origin, Vector3 direction) {
-//        float nDotV = this.normalPlaneVector.scalProd(direction);
-//        if (nDotV == 0) {
-//            return null;
-//        } else {
-//            float nDotXr = this.normalPlaneVector.scalProd(origin);
-//            float t = (this.getD() * (-1) - nDotXr) / nDotV;
-//            if (t > 0) {
-//                float xo = origin.getX();
-//                float yo = origin.getY();
-//                float zo = origin.getZ();
-//                float xd = direction.getX();
-//                float yd = direction.getY();
-//                float zd = direction.getZ();
-//                return new Vector3(xo + t * xd, yo + t * yd, zo + t * zd);
-//            } else {
-//                return null;
-//            }
-//        }
-//    }
+
+    @Override // OKI
+    public Vector3 checkSectionReturnVector(Ray ray) {
+        double d = this.checkSection(ray);
+
+            return ray.getOrigin().vecAdd(new Vector3(ray.getDirection().scalMulti((float)d)));
+
+    }
+
+    @Override
+    public Vector3 checkSectionReturnVectorTransparent(Ray ray) {
+        double d = this.checkSection(ray);
+        if(d!=0)
+        {
+            return ray.getOrigin().vecAdd(new Vector3(ray.getDirection().scalMulti((float)d)));
+        }
+        else
+        {
+            return  null;
+        }
+    }
 }
 

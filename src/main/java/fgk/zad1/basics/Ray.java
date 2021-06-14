@@ -51,22 +51,66 @@ public  class  Ray {
         this.origin =origin;
         this.direction = direction;
     }
-    public GraphicsObject checkFirstIntersectObject()
+
+    @Override
+    public String toString() {
+        return "Ray{" +
+                "origin=" + origin +
+                ", direction=" + direction +
+                '}';
+    }
+
+    public GraphicsObject checkFirstIntersectObject(boolean xd)
     {
         GraphicsObject graphicsObject = null;
         double distance = Double.MAX_VALUE;
         for (GraphicsObject object:Driver.world.objects
              ) {
-              double distancev2 = object.checkSection(this);
 
+
+
+               float distancev2 = object.checkSection(this);
+
+            if(distancev2>0)
+            {
                 if (distance>distancev2&&distancev2!=0)
                 {
+
                     distance = distancev2;
                     graphicsObject = object;
                 }
-            
+            }
+
+
+
         }
+
         return graphicsObject;
     }
+    public GraphicsObject checkFirstIntersectObjectWithShadow(boolean xd)
+    {
+        GraphicsObject graphicsObject = null;
+        double distance = Double.MAX_VALUE;
+        for (GraphicsObject object:Driver.world.objects
+        ) {
 
+            {
+                float distancev2 = object.checkSection(this);
+
+                    if (distance>distancev2&&distancev2!=0)
+                    {
+
+                        distance = distancev2;
+                        graphicsObject = object;
+                    }
+
+
+
+
+            }
+
+        }
+
+        return graphicsObject;
+    }
 }

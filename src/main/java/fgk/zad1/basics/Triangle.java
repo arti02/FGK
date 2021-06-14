@@ -53,7 +53,7 @@ public class Triangle implements GraphicsObject {
         return this;
     }
     @Override
-    public double checkSection(Ray ray) {
+    public float checkSection(Ray ray) {
 
         Vector3 originOfRay = ray.getOrigin();
         Vector3 diretcionOfRay =ray.getDirection();
@@ -81,7 +81,7 @@ public class Triangle implements GraphicsObject {
                 {
                     if(XBxXC.scalProd(N)>=0)
                     {
-                        return d;
+                        return (float)d;
                     }
                 }
             }
@@ -127,6 +127,12 @@ public class Triangle implements GraphicsObject {
         //alfa = Aa/A;
         //alfa +beta + gama =1
     }
+
+    @Override
+    public Vector3 checkSectionReturnVectorTransparent(Ray ray) {
+        return null;
+    }
+
     @Override
     public Lightintencity getColor() {
         return color;
