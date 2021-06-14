@@ -10,7 +10,7 @@ import java.awt.*;
 import java.util.List;
 
 public class Tracer {
-    public static final int maxReccuresion =1;
+    public static final int maxReccuresion =5;
 
 
     /**Ray tracing brute Force
@@ -30,6 +30,7 @@ public class Tracer {
 //
         Driver.image.buffer.setRGB(x,Driver.world.viewPlane.heigth - y -1, Driver.sampler.sample(x,y).toIntneger());
     }
+    //tracer
     public Lightintencity calculateLight(int x, int y,List<Source> sources) throws Exception {
         Lightintencity color = new Lightintencity(0f, 0f, 0f);
         /** Antyaliasing dzielimy nasz pixel na 8 wiersz i 8 kolumn
@@ -113,6 +114,7 @@ public class Tracer {
         color.divideByK(Driver.sampler.samples*Driver.sampler.samples);
         return  color;
     }
+    //Check Material before set the final color of graphic object
     public Lightintencity checkMaterial(GraphicsObject graphicsObject, Ray ray, Vector3 result, Vector3 intersection) throws Exception {
         if(graphicsObject.getMaterial().mirror)
         {
@@ -195,6 +197,7 @@ public class Tracer {
                     result.getZ()*graphicsObject.getColor().getB());
         }
     }
+    //Transparent Recuression
     public Lightintencity transparentRecuression(int i,Ray ray, GraphicsObject graphicsObject,  Vector3 result,Vector3 intersection) throws InterruptedException {
 
             i++;
@@ -238,6 +241,7 @@ public class Tracer {
 
 
     }
+    //Mirror reccuresion
     public Lightintencity mirrorRecurresion(int i,Ray ray, GraphicsObject graphicsObject,  Vector3 result,Vector3 intersection) throws InterruptedException {
 
         if(i < maxReccuresion)
@@ -287,6 +291,7 @@ public class Tracer {
         }
 
     }
+    //Calculate transparent
     public Vector3 calculateTransparent(Vector3 direction, Vector3 normal, float diffuse1, float diffuse2)
     {
 
@@ -303,6 +308,7 @@ public class Tracer {
            return  b.scalMulti(sin02).vecSub(normal.scalMulti(cos02));
 
     }
+    //CalculateLight at graphicObject
     public Vector3 calculateResult( Vector3 intersetion, GraphicsObject graphicsObject)
     {
         Vector3 color = new Vector3(0,0,0);
