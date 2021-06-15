@@ -8,8 +8,8 @@ public class Material {
     private  float Ns;
     private  Vector3 DiffuseKd;
     private float Transparent_d;
-    public boolean mirror;
-    public boolean transparent;
+    public boolean mirror=false;
+    public boolean transparent=false;
 
     @Override
     public String toString() {

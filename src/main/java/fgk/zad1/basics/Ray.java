@@ -71,7 +71,7 @@ public  class  Ray {
 
                float distancev2 = object.checkSection(this);
 
-            if(distancev2>0)
+            if(distancev2>-1)
             {
                 if (distance>distancev2&&distancev2!=0)
                 {
@@ -110,7 +110,6 @@ public  class  Ray {
             }
 
         }
-
         return graphicsObject;
     }
 }

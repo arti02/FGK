@@ -65,16 +65,14 @@ public class World {
     //                    new Vector3(0.4f,0.4f,0.4f),5f,trues,false)));
 
 
+        objects.add(new Sphere(new Vector3(300,0,100),100,new Lightintencity(1f,1f,0f),
+                new Material(new Vector3(0.4f,0.4f,0.4f),new Vector3(0.4f,0.4f,0.4f),
+                        new Vector3(0.4f,0.4f,0.4f),0f,true,false)));
 
-        objects.add(new Sphere(new Vector3(350,0,150),159,new Lightintencity(1f,1f,0f),
-                new Material(new Vector3(0.4f,0.4f,0.4f),new Vector3(0.4f,0.4f,0.4f),
-                        new Vector3(0.4f,0.4f,0.4f),6f,false,true)));
-        objects.add(new Sphere(new Vector3(-100,100,300),50,new Lightintencity(1f,0f,0f),
-                new Material(new Vector3(0.4f,0.4f,0.4f),new Vector3(0.4f,0.4f,0.4f),
-                        new Vector3(0.4f,0.4f,0.4f),1f,true,false)));
-        objects.add(new Sphere(new Vector3(-400,000,100),100,new Lightintencity(1f,0f,0f),
-                new Material(new Vector3(0.4f,0.4f,0.4f),new Vector3(0.4f,0.4f,0.4f),
-                        new Vector3(0.4f,0.4f,0.4f),4f,false,true)));
+
+        objects.add(new Sphere(new Vector3(0,0,300),100,new Lightintencity(1f,1f,0f),
+               new Material(new Vector3(0.4f,0.4f,0.4f),new Vector3(0.4f,0.4f,0.4f),
+                       new Vector3(0.4f,0.4f,0.4f),1.5f,false,true)));
         objects.add(new Surface(new Vector3(400,200,-100), new Vector3(0,0,1),new Lightintencity(1f,1f,1f),
                new Material(new Vector3(0.4f,0.4f,0.4f),new Vector3(0.4f,0.4f,0.4f),
                        new Vector3(0.4f,0.4f,0.4f),5f,false,false)));

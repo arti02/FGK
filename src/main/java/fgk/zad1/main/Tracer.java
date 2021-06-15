@@ -10,7 +10,7 @@ import java.awt.*;
 import java.util.List;
 
 public class Tracer {
-    public static final int maxReccuresion =5;
+    public static final int maxReccuresion =4;
 
 
     /**Ray tracing brute Force
@@ -60,7 +60,7 @@ public class Tracer {
                                     float distancev1=  source.getSourcePoint().vecSub(vector).lengthOfVector();
                                     float distance = source.getSourcePoint().vecSub(intersetion).lengthOfVector();
 
-                                    if (distancev1>=distance-1){
+                                    if (distancev1>=distance){
 
                                         Material material = graphicsObject.getMaterial();
                                         Vector3 normal = graphicsObject.getNormal(intersetion);
@@ -123,10 +123,9 @@ public class Tracer {
             Vector3 reflected = ray.getDirection().reflect(normal);
             Ray reflectedRay = new Ray(intersection, reflected);
             GraphicsObject graphicsObject1 = reflectedRay.checkFirstIntersectObject(true);
-            if(graphicsObject1!=null&&!graphicsObject1.equals(graphicsObject))
+            if(graphicsObject1!=null)
             {   Vector3 section =  graphicsObject1.checkSectionReturnVector(reflectedRay);
-               if(section!=null)
-               {
+
                    if(graphicsObject1.getMaterial().mirror)
                    {
                        int i =0;
@@ -134,22 +133,19 @@ public class Tracer {
                    }
                    else if(graphicsObject1.getMaterial().transparent)
                    {
+                       reflectedRay = new Ray(intersection, reflected);
                        int i =0;
                        return transparentRecuression(i, reflectedRay,graphicsObject1 , result,section );
                    }
                    else
-                   {      Vector3 result1 = calculateResult(section,graphicsObject1);
+                   {
+
+                       Vector3 result1 = calculateResult(section,graphicsObject1);
                        return new Lightintencity(result1.getX()*graphicsObject1.getColor().getR(),
                                result1.getY()*graphicsObject1.getColor().getG(),
                                result1.getZ()*graphicsObject1.getColor().getB());
                    }
-               }
-               else
-               {   Vector3 result1 = calculateResult(section,graphicsObject1);
-                   return new Lightintencity(result1.getX()*graphicsObject.getColor().getR(),
-                           result1.getY()*graphicsObject.getColor().getG(),
-                           result1.getZ()*graphicsObject.getColor().getB());
-               }
+
 
             }
             else
@@ -162,13 +158,13 @@ public class Tracer {
             Vector3 vec1 =   ray.getDirection().normalizeProduct();
             float lambda1 = graphicsObject.getMaterial().getTransparent_d();
              //dziwne  Vector3 normal = graphicsObject.getNormal(intersection).scalMulti(-1);
-                Vector3 normal = graphicsObject.getNormal(intersection).scalMulti(-1);
+                Vector3 normal = graphicsObject.getNormal(intersection);
                 Vector3 directionInside = calculateTransparent(vec1, normal,1,lambda1);
                 Ray insideRay = new Ray(intersection,directionInside);
                     GraphicsObject graphicsObject1 = insideRay.checkFirstIntersectObject(true);
                     if(graphicsObject1!=null)
                     { int i =0;
-                        Vector3 intersectionGraphicObject1 = graphicsObject1.checkSectionReturnVector(insideRay );
+                        Vector3 intersectionGraphicObject1 = graphicsObject1.checkSectionReturnVectorTransparent(insideRay );
                             if (graphicsObject1.getMaterial().mirror) {
                                 return mirrorRecurresion(i, insideRay, graphicsObject1, result, intersectionGraphicObject1);
                             } else if (graphicsObject1.getMaterial().transparent) {
@@ -179,7 +175,6 @@ public class Tracer {
                                         result1.getY() * graphicsObject1.getColor().getG(),
                                         result1.getZ() * graphicsObject1.getColor().getB());
                             }
-
                     }
                     else
                     {
@@ -187,8 +182,6 @@ public class Tracer {
                                 Driver.world.background.getG(),
                                 Driver.world.background.getB());
                     }
-
-
         }
         else
         {
@@ -198,24 +191,25 @@ public class Tracer {
         }
     }
     //Transparent Recuression
-    public Lightintencity transparentRecuression(int i,Ray ray, GraphicsObject graphicsObject,  Vector3 result,Vector3 intersection) throws InterruptedException {
-
+    public Lightintencity transparentRecuression(int i,Ray ray, GraphicsObject graphicsObject,  Vector3 result,Vector3 intersection) throws Exception {
             i++;
-
-            Vector3 innerRayDirection = calculateTransparent(ray.getDirection(), graphicsObject.getNormal(intersection).scalMulti(-1), 1, graphicsObject.getMaterial().getTransparent_d());
+            Vector3 innerRayDirection = calculateTransparent(ray.getDirection(), graphicsObject.getNormal(intersection), 1, graphicsObject.getMaterial().getTransparent_d());
             Ray innerRay = new Ray(intersection, innerRayDirection);
-            Vector3 section = graphicsObject.checkSectionReturnVectorTransparent(innerRay);
+
 
                 GraphicsObject graphicsObject1 = innerRay.checkFirstIntersectObject(true);
                 if (graphicsObject1 != null) {
+                    Vector3 section = graphicsObject1.checkSectionReturnVectorTransparent(innerRay);
                     if(i<maxReccuresion)
                     {
                         if (graphicsObject1.getMaterial().mirror) {
+
+
                             return mirrorRecurresion(i, innerRay, graphicsObject1, result, section);
                         } else if (graphicsObject1.getMaterial().transparent) {
                             return transparentRecuression(i, innerRay, graphicsObject1, result, section);
                         } else {
-                            //TU Błąd
+
                             Vector3 result1 = calculateResult(section,graphicsObject1);
                             return new Lightintencity(result1.getX()*graphicsObject1.getColor().getR(),
                                     result1.getY()*graphicsObject1.getColor().getG(),
@@ -235,14 +229,9 @@ public class Tracer {
                             result1.getY()*graphicsObject.getColor().getG(),
                             result1.getZ()*graphicsObject.getColor().getB());
                 }
-
-
-
-
-
     }
     //Mirror reccuresion
-    public Lightintencity mirrorRecurresion(int i,Ray ray, GraphicsObject graphicsObject,  Vector3 result,Vector3 intersection) throws InterruptedException {
+    public Lightintencity mirrorRecurresion(int i,Ray ray, GraphicsObject graphicsObject,  Vector3 result,Vector3 intersection) throws Exception {
 
         if(i < maxReccuresion)
         {
@@ -251,7 +240,7 @@ public class Tracer {
             Vector3 reflectedDirection = ray.getDirection().reflect(normal);
             Ray reflectedRay = new Ray(intersection,reflectedDirection);
             GraphicsObject graphicsObject1 = reflectedRay.checkFirstIntersectObject(true);
-            if(graphicsObject1!=null&&!graphicsObject1.equals(graphicsObject))
+            if(graphicsObject1!=null)
             {
                 Vector3 section = graphicsObject1.checkSectionReturnVector(reflectedRay);
                 if(graphicsObject1.getMaterial().mirror)
@@ -292,19 +281,18 @@ public class Tracer {
 
     }
     //Calculate transparent
-    public Vector3 calculateTransparent(Vector3 direction, Vector3 normal, float diffuse1, float diffuse2)
-    {
+    public Vector3 calculateTransparent(Vector3 direction, Vector3 normal, float diffuse1, float diffuse2) throws Exception {
+        direction.normalize();
+        normal.normalize();
+        float cos01 = direction.scalProd(normal);
 
-        float cos01 = direction.scalProd(normal)*(-1);
         float sin01 = (float)Math.sqrt((1 -  Math.pow(cos01,2)));
-        sin01 = Math.abs(cos01);
+        sin01 = Math.abs(sin01);
         float cos02 = (float) Math.sqrt(1- (diffuse1*diffuse1*(1-cos01*cos01)/(diffuse2*diffuse2)));
-        cos02 = Math.abs(cos02);
+
         float sin02 = (float) Math.sqrt(1-Math.pow(cos02,2));
-        sin02 = Math.abs(sin02);
+
         Vector3 b = direction.vecAdd(normal.scalMulti(cos01)).scalDiv(sin01);
-
-
            return  b.scalMulti(sin02).vecSub(normal.scalMulti(cos02));
 
     }
@@ -319,7 +307,7 @@ public class Tracer {
                 Vector3 lightDir = source.getSourcePoint().vecSub(intersetion).scalMulti(-1);
                 lightDir.normalize();
                 Ray shadowRay = new Ray(intersetion, lightDir);
-                GraphicsObject firstBumpedObject = shadowRay.checkFirstIntersectObjectWithShadow(true);
+                GraphicsObject firstBumpedObject = shadowRay.checkFirstIntersectObject(true);
                 if (firstBumpedObject != null) {
                     Vector3 vector = firstBumpedObject.checkSectionReturnVector(shadowRay);
                     float distancev1=  source.getSourcePoint().vecSub(vector).lengthOfVector();
@@ -349,7 +337,7 @@ public class Tracer {
                         if (diff < 0) diff = 0;
                         float spec = (float) Math.pow(lightDir.scalProd(reflect), source.shiness);
                         float attenuation = (float) (source.shiness / (distance));
-                        Vector3 result = material.getAmbientKa().scalMulti(attenuation).scalMulti(0.5f);
+                        Vector3 result = material.getAmbientKa().scalMulti(0.5f);
                         color = color.vecAdd(result);
 
                     }

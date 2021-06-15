@@ -38,8 +38,8 @@ public class Driver {
         tracer = new Tracer();
         //    sampler = new AdaptiveSampler(0.05f,0.05f,0.05f,100,100);
         sampler = new RegularSample(1);
-    //     camera=new OrthogonalCamera();
-      camera = new PerspectivalCamera(new Vector3(0, 0, 450), new Vector3(0, 0, -1), 60);
+      camera=new OrthogonalCamera();
+   //   camera = new PerspectivalCamera(new Vector3(0, 0, 450), new Vector3(0, 0, -1), 60);
 
         //listOfSources.add(new PointSource(new Vector3(1000,100,100),new Lightintencity(0.5f,0.5f,0.5f),2f));
           listOfSources.add(new PointSource(new Vector3(300,200,600),new Lightintencity(0.5f,0.5f,0.5f),300f));
